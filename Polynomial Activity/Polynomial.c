@@ -68,6 +68,9 @@ int main()
 	printf("\np2 zero: %d", isZero(p2));
 	printf("\np1 complete: %d", isComplete(p1));
 	printf("\np2 complete: %d", isComplete(p2));
+	
+	destroyPoly(p1);	
+	destroyPoly(p2);
 }
 
 Polynomial newPoly()
