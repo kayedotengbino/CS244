@@ -69,6 +69,7 @@ int main()
 	printf("\np1 complete: %d", isComplete(p1));
 	printf("\np2 complete: %d", isComplete(p2));
 	
+	//I forgot to free the memory
 	destroyPoly(p1);	
 	destroyPoly(p2);
 }
@@ -119,9 +120,7 @@ Polynomial add(const Polynomial p1, const Polynomial p2)
 	Polynomial sum = newPoly();
 	
 	for(i = 0; i < MAX; i++)
-	{
 		sum[i] = p1[i] + p2[i];
-	}
 	
 	return sum;
 }
@@ -132,9 +131,7 @@ Polynomial subtract(const Polynomial p1, const Polynomial p2)
 	Polynomial dif = newPoly();
 	
 	for(i = 0; i < MAX; i++)
-	{
 		dif[i] = p1[i] - p2[i];
-	}
 	
 	return dif;
 }
@@ -170,8 +167,7 @@ int evaluate(const Polynomial p,int x)
 				temp *= x;
 				exp++;
 			}
-			eval = eval + p[i] * temp;
-			
+			eval = eval + p[i] * temp;	
 		}
 	}
 	
