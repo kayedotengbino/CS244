@@ -7,7 +7,7 @@ interface Statistician {
     // override to toString() methods
     public void clear();
     public boolean isEmpty();
-    public int contains(int elem);
+    public boolean contains(int elem);
     public int frequency(int elem); // number of occurrences of elem
     public int getCount();
     public int findMin();

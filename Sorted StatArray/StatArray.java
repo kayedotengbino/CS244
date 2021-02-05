@@ -31,12 +31,9 @@ public class StatArray implements Statistician
 
     public String toString()
     {
-        String str="";
+        
 
-        for(int i=0; i< count; i++)
-            str += items[i] + " ";
-            
-        return str;
+        return Arrays.toString(this.items);  
     }
 
     public void clear()
@@ -49,9 +46,15 @@ public class StatArray implements Statistician
         return this.count == 0;
     }
 
-    public int contains(int elem)
+    public boolean contains(int elem)
     {
-        return findPos(s, elem) != -1;
+        for(int i = 0; i < this.count; i++)
+        {
+            if(this.items[i] == elem)
+                return true;
+        }
+
+        return false;
     }
     
     public int frequency(int elem) // number of occurrences of elem
