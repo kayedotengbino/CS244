@@ -13,6 +13,8 @@ int main()
 	addFront(list, 10);
 	addFront(list, 10);
 	display("list", list);
+	removeFront(list);
+	display("list", list);
 	
 	return 0;
 }

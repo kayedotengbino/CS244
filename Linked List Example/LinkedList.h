@@ -3,7 +3,7 @@
 
 typedef struct node *nodeptr;	//Nodeptr is a pointer to struct node
 
-struct *node
+struct node
 {
 	int item;
 	nodeptr next;	

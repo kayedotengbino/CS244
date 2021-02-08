@@ -56,6 +56,24 @@ int main(){
     display("list",list);
     removeIt(list,40);
     display("list",list);
+    printf("Contains: %d\n", contains(list,8));
+    addFront(list,8);
+    addFront(list,8);
+    addFront(list,40);
+    display("list",list);
+    printf("Frequency: %d\n", frequency(list,4));
+    printf("Sum: %d\n", findSum(list));
+    removeAll(list,8);
+    display("list",list);
+    addFront(list,-1);
+    addFront(list,-2);
+    addFront(list,-40);
+    display("list",list);
+    removeAllNegative(list);
+    display("list",list);
+    removeItemAtPos(list,1);
+    display("list",list);
+    printf("Item: %d\n", getItemAt(list,1));
     
     return 0;
 }
@@ -73,14 +91,25 @@ IntList newIntList() { // create header node
     return createNode(0); // header
 }
 
-/*
-void destroy(IntList *list){
+void destroy(IntList *list)
+{
     clear(*list); //becomes empty
     free(*list); // free header node
 }
-*/
 
-//void clear(IntList list);
+//Still needs to be fixed
+void clear(IntList list)
+{
+	nodeptr temp;
+
+    while(list != NULL)
+    {
+        temp = list;
+        list = list->next;
+
+        free(temp);
+    }
+}
 
 void addFront(IntList list,int x){
     nodeptr temp = createNode(x);
@@ -145,3 +174,178 @@ void removeIt(IntList list,int x){
     }
 }
 
+int contains(const IntList list,int x)
+{
+	int flag = 0;
+    nodeptr temp = list;
+
+    // Iterate till last element until x is not found
+    while (temp != NULL && temp->item != x)
+    {
+        flag = 1;
+        temp = temp->next;
+    }
+
+    return (temp != NULL) ? flag : -1;
+}
+
+int frequency(const IntList list,int x)
+{
+	nodeptr temp = list;
+	int cont = contains(list, x);	//check if x is in the items
+	int freq = 0;
+	
+	if(cont != -1)
+	{
+		while(temp != NULL && temp->item != x)
+		{
+			freq++;
+			temp = temp->next;
+		}
+	}
+	
+	return freq;
+}
+
+int findSum(const IntList list)
+{
+	nodeptr temp = list;
+	int sum = 0;
+	
+	while(temp != NULL)
+	{
+		sum += temp->item;
+		temp = temp->next;
+	}
+	
+	return sum;
+}
+
+//helper function, private
+int getCount(const IntList list) 
+{ 
+    // Base case 
+    if (list == NULL) 
+        return 0; 
+  
+    // count is 1 + count of remaining list 
+    return 1 + getCount(list->next); 
+} 
+
+void removeAll(IntList list,int x)
+{
+	// Store head node
+    nodeptr temp = list, prev;
+ 
+    // If head node itself holds the key or multiple
+    // occurrences of key
+    while (temp != NULL && temp->item == x) 
+    {
+        list = temp->next; // Changed head
+        free(temp); // free old head
+        temp = list; // Change Temp
+    }
+ 
+    // Delete occurrences other than head
+    while (temp != NULL) 
+    {
+        // Search for the key to be deleted, keep track of
+        // the previous node as we need to change
+        // 'prev->next'
+        while (temp != NULL && temp->item != x) 
+        {
+            prev = temp;
+            temp = temp->next;
+        }
+ 
+        // If key was not present in linked list
+        if (temp == NULL)
+            return;
+ 
+        // Unlink the node from linked list
+        prev->next = temp->next;
+ 
+        free(temp); // Free memory
+ 
+        // Update Temp for next iteration of outer loop
+        temp = prev->next;
+    }
+}
+
+//Still needs to be fixed
+void removeAllNegative(IntList list)
+{
+    nodeptr temp = list, prev;
+    int x = temp->item < 0;
+ 
+    while (temp != NULL && temp->item < 0) 
+    {
+        list = temp->next; // Changed head
+        free(temp); // free old head
+        temp = list; // Change Temp
+    }
+ 
+    while (temp != NULL) 
+    {
+        while (temp != NULL && temp->item > x) 
+        {
+            prev = temp;
+            temp = temp->next;
+        }
+ 
+        if (temp == NULL)
+            return;
+ 
+        prev->next = temp->next;
+ 
+        free(temp); // Free memory
+ 
+        temp = prev->next;
+    }
+}
+
+void removeItemAtPos(IntList list,int pos)
+{
+	nodeptr temp = list;
+	nodeptr ptr;
+	nodeptr nextnode;
+	int i;
+	
+	if(list == NULL)
+		return;
+	
+	//Delete head
+	if(pos == 0)
+	{
+		list = temp->next;
+		free(temp);
+		return;
+	}
+	
+	//Store previous node	
+	for(i = 1; temp != NULL && i < pos; i++)
+		temp = temp->next;
+		
+	if(temp == NULL || temp->next == NULL)
+		return;
+		
+	//Delete node at pos-1
+	nextnode = temp->next->next;
+	free(temp->next);
+	temp->next = nextnode;
+}
+
+int getItemAt(IntList list,int pos)
+{
+	nodeptr current = list; 
+  
+    int count = 0; 
+    while (current != NULL) 
+	{ 
+        if (count == pos) 
+            return (current->item); 
+            
+        count++; 
+        current = current->next; 
+    } 
+}

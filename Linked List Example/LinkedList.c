@@ -17,6 +17,7 @@ IntList newIntList()	//create header node
 	return createNode(0);	//header
 }
 
+///Easist way to add in Linked-list is in the front
 void addFront(IntList list, int x)
 {
 	nodeptr temp = createNode(x);
@@ -27,7 +28,7 @@ void addFront(IntList list, int x)
 void addRear(IntList list, int x)
 {
 	nodeptr temp = createNode(x);
-	nodeptr p = list->next;
+	nodeptr p = list;	//p is pointing to the header
 	
 	while(p->next != NULL)
 	{
@@ -52,9 +53,9 @@ void removeRear(IntList list)
 	nodeptr prev = list;	//pointing to the header
 	nodeptr p = list->next;
 	
-	if(p != NULL)	//not empty
+	if(p != NULL)	//not empty, atleast 1 element
 	{
-		while(p->next ! = NULL)	
+		while(p->next != NULL)	
 		{
 			prev = p;	//prev = prev->next
 			p = p->next;
@@ -76,7 +77,7 @@ void display(const char *name, const IntList list)
 	}
 	printf("]\n");
 }
-
+/*
 void destroy(IntList *list)
 {
 	clear(*list);
@@ -99,4 +100,4 @@ void removeIt(IntList list, int x)
         prev = p;
         p = p->next;
     }
-}
+}*/

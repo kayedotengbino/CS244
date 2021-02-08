@@ -1,0 +1,2 @@
+
+    removeIt(list,100);
