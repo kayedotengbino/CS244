@@ -1,19 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
+#include "LinkedList.c"
 
-int main
+int main()
 {
-	IntList list = 
+	IntList list = newIntList();	//create the header node
 	
+	//reversed output if displayed
 	addFront(list, 10);
-	addFront(list, 20);
-	addFront(list, 30);
-	addFront(list, 40);
-	display("list", list);
-	removeFront(list);
-	display("list", list);
-	addRear(list, 1);
+	addFront(list, 10);
+	addFront(list, 10);
+	addFront(list, 10);
 	display("list", list);
 	
 	return 0;

@@ -3,7 +3,7 @@
 
 typedef struct node *nodeptr;	//Nodeptr is a pointer to struct node
 
-struct node
+struct *node
 {
 	int item;
 	nodeptr next;	
@@ -11,9 +11,12 @@ struct node
 
 typedef nodeptr IntList;
 
-IntListList newIntList();	//create header nodes, return IntList
+IntList newIntList();	//create header nodes, return IntList
 void destroy(IntList *list);
+void display(const char *name, const IntList list);
 void clear(IntList list);
 void addFront(IntList list, int x);
 void addRear(IntList list, int x);
-void removeFront
+void removeFront(IntList list);
+void removeRear(IntList list);
+void removeIt(IntList list, int x);
