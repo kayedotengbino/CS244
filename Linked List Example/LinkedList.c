@@ -14,7 +14,7 @@ nodeptr createNode(int x)
 
 IntList newIntList()	//create header node
 {
-	return 
+	return createNode(0);	//header
 }
 
 void addFront(IntList list, int x)
@@ -27,7 +27,7 @@ void addFront(IntList list, int x)
 void addRear(IntList list, int x)
 {
 	nodeptr temp = createNode(x);
-	nodeptr p = list;
+	nodeptr p = list->next;
 	
 	while(p->next != NULL)
 	{
@@ -43,6 +43,7 @@ void removeFront(IntList list)
 	if(temp != NULL)
 	{
 		list->next = temp->next;
+		free(temp);
 	}
 }
 
@@ -74,4 +75,28 @@ void display(const char *name, const IntList list)
 		p = p->next;
 	}
 	printf("]\n");
+}
+
+void destroy(IntList *list)
+{
+	clear(*list);
+	free(*list);
+}
+
+void removeIt(IntList list, int x)
+{
+	nodeptr prev = list;
+    nodeptr p = list->next;
+    
+    while(p != NULL) 
+    {
+        if(x == p->item) 
+		{
+            prev = p->next;
+            free(p);
+            break;
+        }
+        prev = p;
+        p = p->next;
+    }
 }

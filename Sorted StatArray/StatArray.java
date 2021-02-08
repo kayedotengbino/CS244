@@ -29,11 +29,12 @@ public class StatArray implements Statistician
         this.items[i+1] = elem;
     }
 
-    public String toString()
-    {
-        
-
-        return Arrays.toString(this.items);  
+    public String toString(){
+		StringBuffer temp = new StringBuffer("s - [ ");
+	    for(int i = 0; i < count; i++)
+	    	temp.append( items.get(i)+ " ");
+	    temp.append("]");
+	    return temp.toString();
     }
 
     public void clear()
@@ -162,18 +163,6 @@ public class StatArray implements Statistician
     {
         for(int i = 0; i < this.count; i++)
             removeFirst(s, x);
-    }
-
-    public void display()
-    {
-        System.out.print("{ ");
-    
-        for(int i = 0; i < this.count; i++)
-        {
-            System.out.print(this.items[i] + " ");
-        }
-        
-        System.out.print(" }");
     }
 }
 
