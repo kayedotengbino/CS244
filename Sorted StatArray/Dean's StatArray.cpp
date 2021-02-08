@@ -149,15 +149,15 @@ int main() {
 	return 0;
 }
 
+//Binary search
+int findPos(StatArray *array, int x) 
+{
+	
+}
 
-int findPos(StatArray s, int x) {
-	int pos = -1;
-	for (int i=0; i < s->count; i++) {
-		if (s->items[i] == x) {
-			pos = i; break;
-		}			
-	}
-	return pos;
+void shiftLeft()
+{
+	
 }
 
 // using malloc
@@ -207,10 +207,30 @@ void destroy(StatArray *s){
 	*s = NULL;
 }
 
-void add(StatArray s, int x){
+void addLast(StatArray s, int x){
 	if ((s->count < s->size) || doubleTheSize1(s))  { 
 		s->items[s->count++] = x;
 	}	
+}
+
+//Add in sorted order
+void add(StatArray s, int x)
+{
+	int i;
+	
+	if((s->count < s->size) || doubleTheSize(s))
+	{
+		for(i = s->count; i > 0; i--)
+		{
+			if(x > s->items[i - 1])
+				break;
+			else
+				s->items[i] = s->items[i - 1];
+		}
+		
+		s->items[i] = x;
+		s->count;
+	}
 }
 
 void display(const char *name,const StatArray s){
@@ -224,6 +244,7 @@ void display(const char *name,const StatArray s){
 
 void removeFirst(StatArray s, int x){
 	int pos = findPos(s,x);
+	
 	if (pos != -1) {
 		s->items[pos] = s->items[--s->count];
 	}			
@@ -304,10 +325,19 @@ float findStandardDeviation(const StatArray s){
 
 int frequency(StatArray s, int x){
 	int count = 0;
+	int pos = findFirstPos(s->items, x, 0, s->count-1);
+	
 	for (int i=0; i < s->count; i++) {
 		if (s->items[i]==x)
 			count++;
 	}
 	return count;
+}
+
+int findFirstPos(Stat Array, int x)
+{
+	int i, pos = findPos(s->items, x, 0, s->count-1);
+	
+	for(i = pos-1;)
 }
 
