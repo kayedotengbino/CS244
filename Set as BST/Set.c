@@ -77,3 +77,163 @@ treeptr createNode(int item)
 	
 	return temp;
 }
+
+void clear(Set s)
+{
+	treeptr p = s->root;
+	
+	if(p != NULL)
+	{
+		while(p->left != NULL)
+		{
+			p->left = 0;
+		}
+		
+		while(p->right != NULL)
+		{
+			p->right= 0;
+		}
+	}
+	
+	s->root = NULL;
+}
+
+void destroySet(Set *s)
+{
+	clear(*s);
+	free(*s);
+}
+
+int contains(const Set s,int elem)
+{
+	treeptr p = s->root;	
+	
+	while(p != NULL)
+	{
+		if(elem < p->item)
+			p = p->left;	
+		else if(elem > p->item)
+			p = p->right;
+		else
+			return 1;
+	}
+	
+	return 0;
+}
+
+int isEmpty(const Set s)
+{
+	return s->root == NULL;
+}
+
+int isSubset(const Set s1,const Set s2)
+{
+	int res = 0;
+	
+	treeptr p = s1->root;
+	
+	if(cardinality(s1) < cardinality(s2))
+	{
+		res = 1;
+		
+		while(p != NULL)
+		{
+			if(!contains(s2, p->item))
+			{
+				res = 0;
+				break;
+			}
+			
+			p = p->right;
+		}
+	}
+	
+	return res;
+}
+
+int areDisjoint(const Set s1,const Set s2)
+{
+	int res = 0;
+	
+	treeptr p = s1->root;
+	
+	if(cardinality(s1) < cardinality(s2))
+	{
+		res = 1;
+		
+		while(p != NULL)
+		{
+			if(contains(s2, p->item))
+			{
+				res = 0;
+				break;
+			}
+			
+			p = p->right;
+		}
+	}
+	
+	return res;
+}
+
+//needs to be fixed
+Set getUnion(const Set s1,const Set s2)
+{
+    Set res = newSet();
+    
+    treeptr p = s1->root;
+    treeptr q = s2->root;
+
+    while(p != NULL)
+    {
+        add(res, p->item);
+        p = p->right;
+    }
+
+    while(q != NULL)
+    {
+        if(!contains(res, q->item))
+            add(res, q->item);
+        
+        q = q->right;
+    }
+
+    return res;
+}
+
+//needs to be fixed
+Set getIntersection(const Set s1,const Set s2)
+{
+	Set res = newSet();
+	
+	treeptr p = s1->root;
+	treeptr q = s2->root;
+	
+	while(p != NULL)
+	{
+		if(contains(s2, p->item))
+            add(res, p->item);
+			
+		p = p->right;
+	}
+	
+	return res;
+}
+
+//needs to be fixed
+Set getDifference(const Set s1,const Set s2)
+{
+	 Set res = newSet();
+    
+    treeptr p = s1->root;
+
+    while(p != NULL)
+    {
+        if(!contains(s2, p->item))
+            add(res, p->item);
+        
+        p = p->right;
+    }
+
+    return res;
+}

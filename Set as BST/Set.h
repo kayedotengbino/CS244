@@ -31,12 +31,11 @@ struct set
 typedef struct set *Set;
 
 Set newSet();
-void destroySet(Set *s);	//implement
+void destroySet(Set *s);
 void add(Set s, int x);
 void display(const char *name, Set s);
 int cardinallity(Set s);
-void clear(Set s);	//implement
-void removeIt(Set s,int elem);	
+void clear(Set s);	
 int contains(const Set s,int elem);
 int isEmpty(const Set s);
 int isSubset(const Set s1,const Set s2);
