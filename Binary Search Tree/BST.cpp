@@ -215,9 +215,7 @@ void addWithRoot(treeptr t, int x)
 /*void add(treeptr *t, int x)
 {
 	if(*t == NULL)
-	{
 		*t = createNode(x);
-	}
 	else
 		addWithRoot(*t, x);
 }*/
