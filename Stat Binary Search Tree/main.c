@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 				printf("contains(s,5) = %d\n",contains(s,5));
 				break;
 		case 5:	printf("findSum(s) = %d\n",findSum(s));
-				break;			
+				break;				
 		case 6:	printf("findMean(s) = %0.2f\n",findMean(s));
 				break;				
 		case 7:	printf("findMin(s) = %d\n",findMin(s));
@@ -52,11 +52,11 @@ int main(int argc, char *argv[]) {
 				clear(s);
 				printf("isEmpty(s) = %d\n",isEmpty(s));
 				break;
-		/*case 12: printf("findMedian(s) = %0.2f\n",findMedian(s));
+		case 12: printf("findMedian(s) = %0.2f\n",findMedian(s));
 				 add(s,45);
 				 display("s",s);
 				 printf("findMedian(s) = %0.2f\n",findMedian(s));
-				 break;	*/
+				 break;	
 	}
 	destroy(&s);
 	return 0;

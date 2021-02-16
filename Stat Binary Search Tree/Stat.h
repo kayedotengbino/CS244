@@ -35,8 +35,6 @@ struct stat {
 
 typedef struct stat *Stat;
 
-void findItemAt(treeptr t,int mid,int *pos,int *item);
-
 Stat newStat();
 void destroy(Stat *s);
 

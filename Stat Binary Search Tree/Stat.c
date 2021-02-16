@@ -195,34 +195,82 @@ float findMean(Stat s)
     return (float)findSumInTree(s->root) / (float)countNodes(s->root);
 }
 
+//private
+float getSummation(treeptr t, float mean)
+{
+    if(t != NULL)
+        return pow((t->item - mean),2) + getSummation(t->left,mean) + getSummation(t->right,mean);
+    else    
+        return 0;
+}
+
 float standardDeviation(Stat s)
 {
-    float stdDeviation = 0;
     float mean = findMean(s);
+    float sum = getSummation(s->root, mean);
+    float count = countNodes(s->root) - 1;
 
-    treeptr p = s->root;
-
-    if(p != NULL)
-    {
-        if(p->left != NULL)
-        {
-            stdDeviation += pow((p->item) - mean, 2);
-            p = p->left;
-        }
-        if(p->right != NULL)
-        {
-            stdDeviation += pow((p->item) - mean, 2);
-            p = p->right;
-        }
-    }
-
-    stdDeviation += pow((p->item) - mean, 2);
-
-    return sqrt(stdDeviation / (countNodes(s->root) - 1));
+    return sqrt(sum/count);
 }
-/*
+
 float findMedian(Stat s)
 {
-    if(countNodes(s->root) % 2 == 0)
-        return (getCount(s->root)/2) + 1
-}*/
+    if (s->root == NULL) 
+        return 0; 
+  
+    int count = countNodes(s->root), ctr = 0; 
+    treeptr current = s->root, pre, prev; 
+  
+    while (current != NULL) 
+    { 
+        if (current->left == NULL) 
+        { 
+            ctr++; // count current node 
+  
+            // check if current node is the median 
+            if (count % 2 != 0 && ctr == (count/2)+1)   //odd
+                return prev->right->item; 
+            else if (count % 2 == 0 && ctr == (count/2)+1) // Even case 
+                return (float)(prev->item + current->item)/2; 
+  
+            prev = current; // Update prev for even no of nodes 
+  
+            current = current->right;  //Move to the right 
+        } 
+        else
+        { 
+            //Find the inorder predecessor of current 
+            pre = current->left; 
+
+            while (pre->right != NULL && pre->right != current) 
+                pre = pre->right; 
+  
+            //Make current as right child of its inorder predecessor
+            if (pre->right == NULL) 
+            { 
+                pre->right = current; 
+                current = current->left; 
+            } 
+            //Revert the changes made in if part to restore the original tree
+            else
+            { 
+                pre->right = NULL; 
+                prev = pre; 
+  
+                ctr++; // Count current node 
+  
+                // Check if the current node is the median 
+                if (count % 2 != 0 && ctr == (count/2)+1) 
+                    return current->right->item; 
+  
+                else if (count%2==0 && ctr == (count/2)+1) 
+                    return (float)(prev->item+current->item)/2; 
+  
+                // update prev node for the case of even 
+                prev = current; 
+                current = current->right; 
+  
+            }
+        } 
+    } 
+}
