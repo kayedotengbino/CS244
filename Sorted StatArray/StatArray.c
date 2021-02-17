@@ -74,6 +74,7 @@ int findRange(const StatArray s)
     return s->items[s->count-1] - s->items[0];
 }
 
+//T(n) = n+4
 float findMedian(const StatArray s)
 {
     if(s->count % 2 != 0)   //odd
@@ -82,6 +83,7 @@ float findMedian(const StatArray s)
         return (float)(s->items[(s->count - 1) / 2] + (float)s->items[((s->count - 1) / 2) + 1]) / 2;
 }
 
+//T(n) = 3n+5
 int findSum(const StatArray s)
 {
     int sum = 0;
@@ -107,7 +109,7 @@ float findStandardDeviation(const StatArray s)
     return sqrt(stdDeviation / (s->count - 1));
 }
 
-// number of occurences of elem
+// number of occurences of elem, T(n) = 3n+5
 int frequency(StatArray s, int elem)
 {
     int freq = 0;
@@ -121,6 +123,7 @@ int frequency(StatArray s, int elem)
     return freq;
 }
 
+//T(n) = 3n+5
 int findPos(StatArray s, int elem)
 {
     int pos = -1;
