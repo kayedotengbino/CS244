@@ -3,7 +3,7 @@
 #include <math.h>
 #include "StatArray.h"
 
-//implement the functions here
+//implement the functions here, T(n) = n+5
 StatArray newStatArray()
 {
     StatArray stat = (StatArray)malloc(sizeof(struct stat));
@@ -14,6 +14,7 @@ StatArray newStatArray()
     return stat;
 }
 
+//T(n) = 3
 void destroy(StatArray *s)
 {
     free((*s)->items);
@@ -21,12 +22,14 @@ void destroy(StatArray *s)
     *s = NULL;
 }
 
+//T(n) = n+3
 void add(StatArray s, int elem)
 {
     if(s->count < s->size)
         s->items[s->count++] = elem;
 }
 
+//T(n) = 2n+4
 void display(const char *name,const StatArray s)
 {
     printf("\n%s = [", name);
@@ -36,11 +39,13 @@ void display(const char *name,const StatArray s)
     printf(" ]");
 }
 
+//T(n) = constant
 void clear(StatArray s)
 {
     s->count = 0;
 }
 
+//T(n) = 2n+5
 int isEmpty(const StatArray s)
 {
     for(int i = 0; i < s->size; i++)
@@ -52,6 +57,7 @@ int isEmpty(const StatArray s)
     return 1;
 }
 
+//T(n) = 2n+5
 int contains(StatArray s, int elem)
 {
     for(int i = 0; i < s->count; i++)
@@ -63,7 +69,7 @@ int contains(StatArray s, int elem)
     return 0;
 }
 
-//number of occurence of elem
+//number of occurence of elem, T(n) = 2n+7
 int frequency(StatArray s, int elem)
 {
     int frequency = 0;
@@ -77,11 +83,13 @@ int frequency(StatArray s, int elem)
     return frequency;
 }
 
+//T(n) = constant
 int getCount(const StatArray s)
 {
     return s->count;
 }
 
+//T(n) = 3n+9
 int findMin(const StatArray s)
 {
     int min = s->items[0];  //Default min value
@@ -95,6 +103,7 @@ int findMin(const StatArray s)
     return min;
 }
 
+//T(n) = 3n+9
 int findMax(const StatArray s)
 {
     int max = s->items[0];  //Default max value
@@ -108,11 +117,13 @@ int findMax(const StatArray s)
     return max;
 }
 
+//T(n) = 6n+18
 int findRange(const StatArray s)
 {
     return findMax(s) - findMin(s);
 }
 
+//T(n) = 2n+6
 int findSum(const StatArray s)
 {
     int sum = 0;
@@ -123,6 +134,7 @@ int findSum(const StatArray s)
     return sum;
 }
 
+//T(n) = 2n+11
 float findMean(const StatArray s)
 {
     float sum = 0, ctr = 0, mean = 0;
@@ -139,6 +151,7 @@ float findMean(const StatArray s)
     return mean;
 }
 
+//T(n) = 5n+19
 float findStandardDeviation(const StatArray s)
 {
     float sum = 0, average, stdDeviation = 0;
@@ -158,6 +171,7 @@ float findStandardDeviation(const StatArray s)
 /*
     implement remove such that, when you find the item to be removed
     replace it with the last xent
+    T(n) = 3n+11
 */
 void removeFirst(StatArray s, int x)
 {
@@ -171,7 +185,7 @@ void removeFirst(StatArray s, int x)
     }
 }
 
-//remove all occurences, same strategy as removeFirst
+//remove all occurences, same strategy as removeFirst, T(n) = 3n+11
 void removeAll(StatArray s, int x)
 {
     for(int i = 0;  i < s->count; i++)
