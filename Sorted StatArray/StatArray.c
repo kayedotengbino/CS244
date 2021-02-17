@@ -3,6 +3,7 @@
 #include <math.h>
 #include "StatArray.h"
 
+//T(n) = n+5
 StatArray newStatArray()
 {
     StatArray s = (StatArray)malloc(sizeof(struct stat));
@@ -13,6 +14,7 @@ StatArray newStatArray()
     return s;
 }
 
+//T(n) = 3
 void destroy(StatArray *s)
 {
     free((*s)->items);
@@ -23,6 +25,7 @@ void destroy(StatArray *s)
 /*
     will just add at the end
     this can be used assuming that add in sorted does not work
+    T(n) = n+3
 */
 void addLast(StatArray s, int elem)
 {
@@ -30,7 +33,7 @@ void addLast(StatArray s, int elem)
         s->items[s->count++] = elem;
 }
 
-// will add in sorted order
+// will add in sorted order, T(n) 5n+14
 void add(StatArray s, int elem)
 {
     int i;
@@ -41,6 +44,7 @@ void add(StatArray s, int elem)
     s->items[i + 1] = elem;
 }
 
+//T(n) = 2n+4
 void display(const char *name,const StatArray s)
 {
     printf("%s = [", name);
@@ -49,26 +53,31 @@ void display(const char *name,const StatArray s)
     printf(" ]\n");
 }
 
+//T(n) = constant
 int isEmpty(const StatArray s)
 {
     return s->count == 0;
 }
 
+//T(n) = constant
 void clear(StatArray s)
 {
     s->count = 0;
 }
 
+//T(n) = constant
 int findMin(const StatArray s)
 {
     return s->items[0];
 }
 
+//T(n) = constant
 int findMax(const StatArray s)
 {
     return s->items[s->count-1];
 }
 
+//T(n) = 2n+4
 int findRange(const StatArray s)
 {
     return s->items[s->count-1] - s->items[0];
@@ -94,11 +103,13 @@ int findSum(const StatArray s)
     return sum;
 }
 
+//T(n) = 3n^2+5n+1
 float findMean(const StatArray s)
 {
     return (float)findSum(s) / s->count;
 }
 
+//T(n) = 7n^2+5n+1
 float findStandardDeviation(const StatArray s)
 {
     float stdDeviation = 0;
@@ -140,11 +151,13 @@ int findPos(StatArray s, int elem)
     return pos;
 }
 
+//T(n) = 3n+6
 int contains(StatArray s, int elem)
 {
     return findPos(s, elem) != -1;
 }
 
+//T(n) = 10
 int binarySearch(StatArray s, int x, int first, int last)
 {
     int mid;
@@ -166,6 +179,7 @@ int binarySearch(StatArray s, int x, int first, int last)
     there might be changes also in the implementation here
     implement remove such that, when you find the item to be removed
     replace it with the last xent
+    T(n) = 3n^2+13n+5
 */
 void removeFirst(StatArray s, int x)
 {
@@ -180,7 +194,7 @@ void removeFirst(StatArray s, int x)
     }
 }
 
-//remove all occurrences, same strategy as removeFirst
+//remove all occurrences, same strategy as removeFirst, T(n) = 3n^2+16n+5
 void removeAll(StatArray s, int x)
 {
     for(int i = 0; i < s->count; i++)
