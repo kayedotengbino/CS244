@@ -14,7 +14,7 @@ SetLink newSetLink(){
 	return createNode(0);	
 }
 
-
+//O(n)
 void display(const char *name,const SetLink s){
 	nodeptr p = s->next;
 	printf("%s = { ",name);
@@ -25,6 +25,7 @@ void display(const char *name,const SetLink s){
 	printf("}\n");	
 }
 
+//O(n) because it needs to be distinct
 void add(SetLink s,int elem)
 {
     if(!contains(s, elem))
@@ -137,6 +138,7 @@ int areDisjoint(const SetLink s1,const SetLink s2)
     return res;
 }
 
+//O(n)
 SetLink getUnion(const SetLink s1,const SetLink s2)
 {
     SetLink res = newSetLink();
