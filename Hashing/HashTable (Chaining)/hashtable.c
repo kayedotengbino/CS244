@@ -75,6 +75,7 @@ void addLL(LinkedList list,int key) // add at the front
 	list->next = temp;
 }
 
+//O(i)
 void add(HashTable hTable,int key) 
 {
     int index = hash(hTable, key);
@@ -96,6 +97,7 @@ int containsLL(LinkedList list,int key)
     return 0;
 }
 
+//O(n/size)
 int contains(HashTable hTable,int key) 
 {
     int index = hash(hTable, key);
@@ -121,6 +123,7 @@ void removeLL(LinkedList list,int key)
     }
 }
 
+//O(n/size)
 void removeH(HashTable hTable,int key) 
 {
     int index = hash(hTable, key);
