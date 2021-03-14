@@ -62,3 +62,33 @@ void merge(int arr[], int l, int m, int r)
         k++;
     }
 }
+/*
+Merge sort 
+    is an efficient algorithm that is based on divide and conquer
+    invented by John Von Neumann in 1945
+    discovered by playing cards
+    one of the sorting algorithms used for computers
+    comparison based
+    It has 2 functions
+        helper function - void merge(int arr[], int l, int m, int r)    O(n)
+        main function - void mergeSort(int arr[], int l, int r) - 2T(n/2)
+                            It recursively calls itself twice 
+                                for 1st and 2nd half
+                            
+    this have a stable running time and it is O(nlogn)
+
+John Von Neumann
+    hungarian-american, mathematician, physicist, pol-math, computer scientist, engineer
+
+divide and conquer 
+    recursively breaks down problems into smaller subproblems
+
+Application
+    approaching divide and conquer algorithms
+    counting inversion in an array
+        how far/close the array is from being sorted
+        if sorted, count inversion == 0
+    Sorting external/secondary memory
+    sorting linked list
+    sorting arrays with large number of datas and needs to be stable
+*/
