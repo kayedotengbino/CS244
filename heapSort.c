@@ -5,6 +5,7 @@ struct Heap
     int (*cmp)(int, int);
 } *MaxHeap;
 
+//O(nlogn) - worst, O(n)
 MaxHeap createAndBuildHeap(int *array, int size, int (*cmp)(int, int))
 {
     MaxHeap maxHeap = (MaxHeap)malloc(sizeof(struct Heap));
@@ -30,7 +31,8 @@ int dsc(int a, int b)
     return (a < b) - (b > a);
 }
 
-MaxHeap createAndBuildHeap(MaxHeap maxHeap, int idx)
+//O(logn)
+MaxHeap heapify(MaxHeap maxHeap, int idx)
 {
     int largest = idx;
     int left = (idx << 1) + 1;
@@ -56,7 +58,7 @@ void heapSort(int *array, int size, int (*cmp)(int, int))
     while(maxHeap->size > 1)
     {
         swap(&maxHeap->array[0], &maxHeap->array[maxHeap->size - 1]);
-        --maxHeap->sizel
+        --maxHeap->size;
         heapify(maxHeap, 0);
     }
 }
@@ -64,6 +66,11 @@ void heapSort(int *array, int size, int (*cmp)(int, int))
 /*
     Heap Sort
         comparison based sorting techinique that is based on BINARY HEAP data structure
+        Time complexity is stable - O(nlogn)
+        if parents is stored in an array
+            left = 2*i+1
+            right = 2*i+2
+        Space-relevant if implemented in array
 
     Binary Heap
         complete binary tree where elements are sorted in a special order and satisfies the 
