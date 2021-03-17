@@ -46,3 +46,36 @@ Running time
     AVL - O(log n) always balanced
     Insertion - O(log n)
     Traversal - O(log n)
+
+Psuedo code
+    function Left Rotation(current)
+        newRoot = current->right
+        current->right = newRoot->left
+        newRoot->left = current
+        updateHeight(current)
+        updateHeight(newRoot)
+        
+        return newRoot
+    end function
+
+    function Right Rotation(current)
+        newRoot = current->left
+        current->left = newRoot->right
+        newRoot->right = current
+        updateHeight(current)
+        updateHeight(newRoot)
+        
+        return newRoot
+    end function
+
+    function Left-Right Rotation(current)
+        current->left = leftRotate(current)
+        
+        return rightRotate(current)
+    end function
+
+    function Left-Right Rotation(current)
+        current->right = rightRotate(current)
+        
+        return leftRotate(current)
+    end function
