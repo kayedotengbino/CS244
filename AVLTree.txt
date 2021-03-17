@@ -1,0 +1,48 @@
+AVL Tree   
+    self balancing BST
+    invented by Gregory Anderson Velsky and Evgeni Landos
+    released on papers in 1962 (An Algorithm for the organization of information)
+    considered balanced if the difference (Balance Factor) between the height of the right node is
+      not more the all the node of the left
+    has balanced Factor
+    is always balanced
+    Height of tree is O(log N)
+    Searching is efficient
+
+Balance Factor
+    Determines if a tree is balanced
+    every node in AVL is cakculated by balance Factor
+    height of left subtree - height of right subtree
+    <= 1
+
+4 Types of Rotation
+    Single Rotation 
+        Left Rotation
+            1. Right subtree of the root must become the new root
+            2. Prev root will become the left subtree of the newRoot
+        Right Rotation
+    Double Rotation
+        Left-Right Rotation
+        Right-Left Rotation
+
+Gregory Anderson Velsky and Evgeni Landos
+    soviet inventors
+
+BST
+    if balanced will have the running time of O(log N)
+    no balanced Factor
+    not balanced all the tiime
+    Height of tree is O(N)
+    Searching is inefficient
+
+O(log N)
+    the best time a BST could have
+
+Algorithm Design Technique 
+    Divide and Conquer
+
+Running time
+    BST - O(h) - height of the bst O(n) - skewed O(loh n) - balanced 
+    AVL - O(log n) always balanced
+    Insertion - O(log n)
+    Traversal - O(log n)
