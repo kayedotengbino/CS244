@@ -1,0 +1,43 @@
+    Binomial Queue
+        invented by Jean Vuillemin in 1978
+        extension of binary heap that provides faster range of operations together with
+          other operations provided by binary heap
+        consists of collection of binomial tree that satisfies the binary heap property
+          and one tree of each degree
+        PROPERTIES
+            Its key is contained in Bsub0 to Bsubk
+            has at most floor O(log2n)
+            longest tree is floor O(log2n)
+        RUNNING time
+            O(log N) for all operations - stable
+
+    Jean Vuillemin
+        british computer scientist in data structure
+        aimed for a logarithmic time for all operations of priority queues and binary Heap
+
+    Binomial Tree
+        ordered Tree
+        follows the property of min-heap in data structure
+        PROPERTIES
+            Binomial Tree of k degree, the root has k childre
+            Binomial tree elements is 2^k
+            Binomial tree height is k
+            Children of the root are Binomial tree of degree k-1...0
+
+    Min-Heap    
+        parents node > child nodes
+
+    Relationship of Binomial Queue and Binary System
+        Binomial queue with n nodes has the number of binomial tree = number of setbits in the binary
+        representation
+
+    Algorithm Design Technique used
+        Collection of Binomial Tree's
+        min heap order
+        must not have 1 tree of the same height
+        implement trees using leftto right sibling
+
+    Application
+        extension of binary heap
+        have the operations provided by the binary heap
+        provides faster range of operations by O(logN) for Binomial Queue and O(n) for binary Heap
