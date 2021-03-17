@@ -25,7 +25,6 @@ void countSort(int arr[], int n, int place)
         invented by Harold H. Seward in mid 1950s
         Running time - O(n + k), n = size, k = size
         can only sort integers
-        small integers with multiple counts
 
     Harold H. Seward
         invented theoritic sort and count sort in 1945
