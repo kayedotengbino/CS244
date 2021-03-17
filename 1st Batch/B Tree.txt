@@ -1,0 +1,23 @@
+B Tree
+    invented with Rudolft Bayer and Ed McCreight in 1972
+    self balancing search tree in which each node can contain more than one key
+      and can have more than 2 Children
+    Generalized form of BST
+    Height-balanced m-way tree
+
+Tree
+    Hierarchal data structure for storage and retieval of data
+    non-linear data structure
+
+M
+    a number of pointer a single mode could have
+
+PROPERTIES
+    every node has at most m children
+    a non-lead node h children if it is met a leaf node
+    every non-leaf node, except the root, have at least m/2 children (ceil)
+    all leaves appear in the same level
+
+TIME COMPLEXITY
+    O(log N) for all because stable
+        n = total number of elem in b-tree
