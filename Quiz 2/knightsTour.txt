@@ -1,0 +1,31 @@
+Algorithm Design Technique
+    Back Tracking
+        Process
+            if none of the alternative works out
+                go to the previous stage and remove the item added in the
+                    previous stage
+            if we reach the initial stage back
+                no solution exist
+            If adding an item doesn't violate constraints 
+                recursively add items one by one
+            If solution vector becomes complete
+                print the solution
+        Algorithm
+            If all squares are visited
+                print the solution
+            else
+                a. add one of the next moves to solution vector and 
+                    recursively check if this move leads to a solution
+                b. If the move chosen in the above step doesn't leads to a
+                    solution
+                    remove this move from the solution vector and try other
+                    alternative moves
+                c. If none of the alternatives work
+                    return false
+            Note: Returning false will remove the previously added item in 
+                recursion and if false is returned by the initial call of
+                recursion then NO SOLUTION EXISTS
+        RUNNING TIME - worst O(8^n^2)
+    Close Tour
+        Loopable configuration where the endpoint can be connected to the 
+            starting point with a valid knight move

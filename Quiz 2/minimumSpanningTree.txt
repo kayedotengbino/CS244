@@ -1,0 +1,28 @@
+uses kruskal's algorithm
+APPLICATION
+    Network Designs
+        Everything is connected and everything needs to be only connected
+        once
+        Connect everything with the lowest cost and efficiency
+
+Kruskal's Algorithm
+    greedy algorithm - always choose the best option at a given time
+    Faster than Boruvka 
+    Slower that Prim's if the graph has high density
+    disjoint set operations
+    TIME COMPLEXITY - O(E log V) - same as Boruvka's & Prim's 
+    ALGO:
+        1: Sort the edges in asc order based on its weight
+        2: Pick the edge with the smallest weight then check if it forms
+            a cycle with spanning tree so far 
+                If it does
+                    discard
+                else
+                    include
+        3: Repeat 2 until there are (V-1, v = number of vertex) in the 
+            spanning tree
+
+We should use Kruskal when the graph is sparse, i.e.small number of edges,
+like E=O(V),when the edges are already sorted or if we can sort them in 
+linear time. We should use Prim when the graph is dense, i.e number of 
+edges is high ,like E=O(V²)

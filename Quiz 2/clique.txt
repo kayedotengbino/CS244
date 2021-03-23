@@ -1,0 +1,5 @@
+Clique
+    vertices: point where 2 or more lines meet and forms an angle
+    maximal clique: cannot extend to other nodes
+    Time Complexity - k-clique O(n^k)
+    Space Complexity - O(n^2)

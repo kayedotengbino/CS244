@@ -1,0 +1,60 @@
+Rod-Cutting
+    ALOGORITHM
+        recursive algorithm that calls the function for the length of 
+            [n-i], where i = [1 ... n]
+        trying al
+    GENERAL ALGORITHM (without memoization)
+        cut-Rod(p, n)
+            if n == 0
+                return 0
+            q = -infinity
+            for i = 1 to n 
+                q = max(q, p[i] + cut-rod(p, n-i))
+            return q
+    Time Complexity - O(2^n-1) before dynamic porogramming
+                    - O(n^2) memoization
+                    - O(n^2) bottom-up
+    ALGORITHM DESIGN-TECHNIQUE  
+        Dynamic Programming
+            create optimal substructure
+            solves each problem just one time and save the answer in a 
+                table rather than solving the same sub problem multiple 
+                times
+            avoiding the work of recumputing everytime
+            STEPS
+                1: Characterize the structure of an optimal solution
+                2: Recursively define the value of an optimal solution
+                3: Compute the value of an optimal solution, typically 
+                    in a bottom-up fashion
+                4: Construct an optimal solution from computed information
+            2 WAYS
+                1: Top-down with memoization
+                    PSEUDO CODE
+                        memoized-cut-rod-aux(p,n,r)
+                            if r[n] >= 0
+                                return r[n]
+                            if n == 0
+                                q = 0
+                            else q = -infinity
+                                for i = 1 to n
+                                    q - max(q, p[i] + memoized-cut-rod
+                                    -aux(p,n-i,r))
+                            r[n] = q
+                            retrun q
+                2: Bottom-up
+                    extended-bottom-up-cut-rod(p,n)
+                    let r[0...n] ne a new array
+                    r[0] = 0
+                    for j = 1 to n
+                        q = -infinity
+                        for i = 1 to j
+                            if q< p[i] r[j-1]
+                            s[j] = i    //stores the length of the cut 
+                        r[j] = q
+                    return r and s 
+
+                    print-cut-rod-solution(p,n)
+                        (r,s) = extended-bottom-up-cut-rod(p, n)
+                        while n > 0
+                            print s[n]
+                            n = n - s[n]

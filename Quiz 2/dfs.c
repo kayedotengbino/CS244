@@ -21,7 +21,7 @@ void dfs(struct Graph *graph, int vertex)
     DFS 
         Depth-First Search
         starts at the root then explore as far as possible along each 
-            branch before backtracking
+            branch before backtracking (if it is a tree)
         ALGO:
             1: Start by putting any one of the graph's vertices to the top
                 of the stack

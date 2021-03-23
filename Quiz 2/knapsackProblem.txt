@@ -1,0 +1,7 @@
+Knapsack problem
+    combinational optimization problem
+    TIME COMPLEXITY 
+        O(2^n) - brute force
+
+    ALGORITHM DESIGN-TECHNIQUE
+        Dynamic Programming

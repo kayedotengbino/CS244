@@ -1,0 +1,18 @@
+Running TIme
+    O(2^n) - without memoization
+        ALGO
+            if(A[i] == '\0' || B[i] == '\0')
+                return 0
+            else if(A[i] == B[i])
+                return 1 + lcs(A, B, i, j)
+            else
+                return max(lcs(A,B,i+1,j), lcs(A,B,i,j+1))
+    O(m*n) - with memoization
+        m and n is the size of string
+        ALGO
+            if(i == 0 || j == 0)
+                LCS[i][j] = 0
+            else if(A[i-1] == B[j-1])
+                LCS[i][j] = LCS[i-1][j-1]+1
+            else
+                LCS[i][j] = max(LCS[i-1][j], LCS[i][j-1])

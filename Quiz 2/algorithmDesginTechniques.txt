@@ -1,0 +1,43 @@
+GREEDY ALGO
+        simple intuitive algorithm
+        tries to find the overall best solution to the problem and makes
+            the best decision
+        has only one shot to compute the optimal solution so that it never
+            goes back and reverse the decision
+        builds a solution piece by piece
+    
+        PROPERTIES
+            GREEDY CHOICE PROPERTY
+                optimal solution can be reached by choosing the optimal 
+                    chocice of each steo
+            OPTIMAL SUBSTRUCTURE
+                optimal solution to the entire problem contains optimal 
+                    solution to the subproblems
+
+Ford-Fulkerson
+    greedy algorithm
+    calculates the maximum possible flow in a network or a graph
+
+Dynamic Programming
+    siminal to divide and conquer in breaking down the problem into smaller
+        and yet smaller possible sub problems are not solved 
+        independently.
+    Results of these smaller sub-problems are remembered and used for 
+        similar or overlapping sub-problems
+    Results can be re-used
+
+Divide and conquer
+    not clear if technique is fast or Slower
+    each level of recursion the size gets smaller and the number of sub problems 
+        increases
+
+Back Tracing
+    Algorithmic paradigm
+    tries different solutions until it finds the correct one
+    naive solution
+
+Warmm props rule
+Close Tour
+    Loopable configuration where the endpoint can be connected to th starting 
+        point with a valid knight move
+    

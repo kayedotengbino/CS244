@@ -1,0 +1,17 @@
+Flow Network
+    directed graph G written as G(V, E) that have a source S & a sink T 
+    TIME COMPLEXITY
+        O(e*f); e = all edges, f = max flow
+    Algorithm Design 
+        Ford-Fulkerson - greedy algorithm
+
+Augmented graph
+    making data flow through the edges
+    METHOD
+        non-full forward edges
+            flow has not reach the capacity
+        non-empty backward edges
+            follows the flow shown in the graph
+
+Bottleneck capacity
+    highest capacity the flow coud carry to the sink

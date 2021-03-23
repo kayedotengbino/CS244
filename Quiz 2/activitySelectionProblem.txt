@@ -1,0 +1,35 @@
+ALGO DESIGN TECHNIQUE
+    GREEDY ALGO
+        approach has a few trade-offs
+        suitable for optimization 
+    STANDARD ALGO FOR GREEDY ALGO
+        Kruskal's min spanning tree  
+            find the min spanning forest of an undirected graph
+        Djikstras shortest path
+            findintg the shortest path of node in a graph
+        Prims min spanning tree
+            fin the min spanning  tree for weighted & directed graph
+        Huffman Coding
+            optimal prefix cde that is commonly uised for loseless data 
+                compression
+
+PROCESS
+    STEPS - using greedy algo
+        1: sort the activities according to ther finishing time
+        2: Select the 1st activity frm the sorted array and print it
+        3: Do the following for the remaining activities in the sorted array
+            If start time of this activity >= finishing tome of the 
+                previously selected activity
+                selct this activity and print it
+
+ADVANTAGES OF USING GREEDY ALGO IN ASP
+    Analyzing the running time for greedy algo will generally be much
+        easier than for other techniques
+
+DISADVANTAGES
+    not all greedy algo are correct and safe
+    hard to prove why it is correct
+
+RUNNING TIME
+    O(n); n = number of uactivities
+    O(nlogn); sorting 

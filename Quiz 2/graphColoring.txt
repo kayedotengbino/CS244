@@ -1,0 +1,24 @@
+Chromatic number   
+    smallest number of colors needed to color a graph G
+
+Cycle graph
+    Even Cycle - even number of vertices (requires 2 color)
+    Odd Cycle - odd number of vertices (requires 3 color)
+
+Basic Greedy Algorithm
+    never uses more than d+1; d: maximum degree of a vertex in a given graph
+    PROCESS
+    1: Arrange the vertices of the graph in some order
+    2: Color first vertex with first color
+    3: Do the following for remaining v-1 vertices
+        a: consider the currently picked vertex and color it with the lowest
+            numbered color that has not been used on any previously colored 
+            vertices adj to it. 
+            If all previously used colors appear on vertices adj to picked 
+                vertix
+                then assign a new color to it
+    Time Complexity - O(V^2 + E) worst case
+                    - O(n^2)
+
+Planar graph
+    not more than 4 colors due to 4-color theorem
